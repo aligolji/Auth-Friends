@@ -5,6 +5,7 @@ import './App.css';
 
 import FriendList from './components/FriendList';
 import Login from './components/Login';
+import AddFriend from './components/AddFriend';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
@@ -16,15 +17,16 @@ function App() {
             <Link to='/login'>Login</Link>
           </li>
           <li>
-            <Link to='/protected'>Protected Page</Link>
+            <Link to='/friendslist'>Friends List</Link>
+          </li>
+          <li>
+            <Link to='/form'>Add Friend</Link>
           </li>
         </ul>
         <Switch>
-          <PrivateRoute exact path='/protected' component={FriendList} />
           <Route path='/login' component={Login} />
-          <Route>
-            <Login />
-          </Route>
+          <PrivateRoute exact path='/friendslist' component={FriendList} />
+          <PrivateRoute exact path='/form' component={AddFriend} />
         </Switch>
       </div>
     </Router>
