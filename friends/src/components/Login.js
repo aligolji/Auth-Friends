@@ -2,8 +2,6 @@ import React from 'react';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-console.log('note from top of login')
-
 class Login extends React.Component {
     // constructor() {
     //     super();
@@ -13,7 +11,7 @@ class Login extends React.Component {
             password: '',
         }
     };
-    
+
     handleChanges = e => {
         this.setState({
             credentials: {
@@ -22,24 +20,24 @@ class Login extends React.Component {
             }
         });
     };
-    
-    login = e => {
+
+    handleLogin = e => {
         e.preventDefault();
         axiosWithAuth()
-        .post('/api/login', this.state.credentials)
-        .then(res => {
-            console.log(res);
-            console.log('CONSOLE LOG');
-            localStorage.setItem('token', res.data.payload);
-        })
-        .catch((err) => console.log(err));
+            .post('/api/login', this.state.credentials)
+            .then(res => {
+                console.log(res);
+                localStorage.setItem('token', res.data.payload);
+                this.props.history.push('/protected');
+            })
+            .catch((err) => console.log(err));
     };
-    
-    
+
+
     render() {
         return (
             <div>
-                <form onSubmit={this.login}>
+                <form onSubmit={this.handleLogin}>
                     <input
                         type='text'
                         name='username'
