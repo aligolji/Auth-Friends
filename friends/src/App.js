@@ -25,8 +25,8 @@ function App() {
         </ul>
         <Switch>
           <Route path='/login' component={Login} />
-          <PrivateRoute exact path='/friendslist' component={FriendList} />
-          <PrivateRoute exact path='/form' component={AddFriend} />
+          <PrivateRoute path='/friendslist' component={FriendList} />
+          <PrivateRoute path='/form' component={AddFriend} />
         </Switch>
       </div>
     </Router>
